@@ -56,3 +56,7 @@ optional arguments:
                         "./../models")
   -h, --help            show this help message and exit
 ```
+
+
+**Results For EDSR Baseline Model**
+Scale 2:
