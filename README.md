@@ -78,9 +78,9 @@ You can find the result images from ```edsr/results``` folder.
 
 
 ## Results For EDSR Baseline Model 
-**Scale 2:**
+## **Scale 2:**
 ![super-resolution image scale2](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/result_scale2.png)
-**Scale 3:**
+## **Scale 3:**
 ![super-resolution image scale3](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/result_scale3.png)
-**Scale 4:**
+## **Scale 4:**
 ![super-resolution image scale4](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/results_scale4.png)
