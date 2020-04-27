@@ -24,7 +24,7 @@ usage: train.jl [--scale SCALE] [--res_scale RES_SCALE]
                 [--batchsize BATCHSIZE] [--patchsize PATCHSIZE]
                 [--lr LR] [--decay DECAY] [--epochs EPOCHS]
                 [--evaluate_every EVALUATE_EVERY]
-                [--decay_no DECAY_NO] [--output_dir OUTPUT_DIR] [-h]
+                [--decay_no DECAY_NO] [--output_dir OUTPUT_DIR]     [--result_dir RESULT_DIR] [-h]
 
 EDSR Implementation in Knet
 
@@ -32,7 +32,7 @@ optional arguments:
   --scale SCALE         super-resolution scale (type: Int64, default:
                         2)
   --res_scale RES_SCALE
-                        residual scaling (type: Int64, default: 1)
+                        residual scaling (type: Float64, default: 1.0)
   --model_type MODEL_TYPE
                         type of model one of:
                         [baseline(16ResBlocks,64outputfeature),
@@ -45,7 +45,7 @@ optional arguments:
                         number of output feature channels (type:
                         Int64, default: 64)
   --data DATA           dataset directory (default:
-                        "/kuacc/users/ckorkmaz14/comp541_project/dataset/")
+                        "/kuacc/users/ckorkmaz14/comp541_project/data/")
   --batchsize BATCHSIZE
                         input batch size for training (type: Int64,
                         default: 16)
@@ -64,7 +64,10 @@ optional arguments:
                         Int64, default: 200)
   --output_dir OUTPUT_DIR
                         output directory for saving model (default:
-                        "./../models")
+                        "/kuacc/users/ckorkmaz14/comp541_project/edsr/models")
+  --result_dir RESULT_DIR
+                        output directory for saving model (default:
+                        "/kuacc/users/ckorkmaz14/comp541_project/edsr/results")
   -h, --help            show this help message and exit
 ```
 ## Test
