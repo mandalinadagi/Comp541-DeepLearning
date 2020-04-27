@@ -72,7 +72,7 @@ optional arguments:
   -h, --help            show this help message and exit
 ```
 ## Test
-You can find the result images from ```edsr/results``` folder and models from ```edsr/models```
+You can find the result images from ```../edsr/results``` folder and models from ```../edsr/models```
 
 | Model | Scale | File name (.jld2) | Parameters | **PSNR** | Loss |
 |  ---  |  ---  | ---       | ---        | ---  | --- |
