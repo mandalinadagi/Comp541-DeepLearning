@@ -68,7 +68,7 @@ optional arguments:
   -h, --help            show this help message and exit
 ```
 ## Test
-You can find the result images from ```edsr/results``` folder.
+You can find the result images from ```edsr/results``` folder and models from ```edsr/models```
 
 | Model | Scale | File name (.jld2) | Parameters | **PSNR** |
 |  ---  |  ---  | ---       | ---        | ---  |
@@ -77,7 +77,7 @@ You can find the result images from ```edsr/results``` folder.
 | | 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB |
 
 
-## Results For EDSR Baseline Model 
+## Results for EDSR Baseline Model 
 ## **Scale 2:**
 ![super-resolution image scale2](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/result_scale2.png)
 ## **Scale 3:**
