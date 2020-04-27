@@ -24,7 +24,8 @@ usage: train.jl [--scale SCALE] [--res_scale RES_SCALE]
                 [--batchsize BATCHSIZE] [--patchsize PATCHSIZE]
                 [--lr LR] [--decay DECAY] [--epochs EPOCHS]
                 [--evaluate_every EVALUATE_EVERY]
-                [--decay_no DECAY_NO] [--output_dir OUTPUT_DIR]     [--result_dir RESULT_DIR] [-h]
+                [--decay_no DECAY_NO] [--output_dir OUTPUT_DIR]
+                [--result_dir RESULT_DIR] [-h]
 
 EDSR Implementation in Knet
 
