@@ -70,11 +70,11 @@ optional arguments:
 ## Test
 You can find the result images from ```edsr/results``` folder and models from ```edsr/models```
 
-| Model | Scale | File name (.jld2) | Parameters | **PSNR** |
-|  ---  |  ---  | ---       | ---        | ---  |
-| **EDSR** | 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB |
-| | 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB |
-| | 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB |
+| Model | Scale | File name (.jld2) | Parameters | **PSNR** | Loss |
+|  ---  |  ---  | ---       | ---        | ---  | --- |
+| **EDSR** | 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB | 0.014 |
+| | 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB | 0.020 |
+| | 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB | 0.025 | 
 
 
 ## Results for EDSR Baseline Model 
