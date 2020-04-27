@@ -1,4 +1,4 @@
-# Comp541-DeepLearning-EDSR
+# EDSR- Julia
 Repository for EDSR model[1] implementation by using julia and Knet. 
 
 1. Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and
