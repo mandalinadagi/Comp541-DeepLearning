@@ -1,11 +1,11 @@
 function get_dir(directory)
-cd(directory)
+    cd(directory)
 
-array_dir= Any[]
-for i in walkdir(directory)
-    push!(array_dir, i)
-end
-array_dir = array_dir[1][3]
+    array_dir= Any[]
+    for i in walkdir(directory)
+        push!(array_dir, i)
+    end
+    array_dir = array_dir[1][3]
 end
 
 function rgb_images(img)
@@ -46,12 +46,17 @@ function shuffle_img(clt_lr, clt_hr)
     
 end
 
-function pixelShuffle2(x)
+function pixelShuffle2(x, scale)
   xsize = size(x)
+  sc = scale
+  if scale == 4 
+        sc = 2
+  end
+  sc_sq = sc * sc
   
-  xr = reshape(x, (xsize[1],xsize[2],2,2,convert(Int,xsize[3]/4),xsize[4]))
+  xr = reshape(x, (xsize[1],xsize[2],sc,sc,convert(Int,xsize[3]/sc_sq),xsize[4]))
   xrp = permutedims(xr, (3,1,4,2,5,6))
-  xrpr = reshape(xrp, xsize[1]*2, xsize[2]*2,convert(Int,xsize[3]/4),xsize[4])
+  xrpr = reshape(xrp,xsize[1]*sc, xsize[2]*sc,convert(Int,xsize[3]/sc_sq),xsize[4])
 
   xrpr
 end
@@ -72,6 +77,6 @@ end
 function img_save(dir, tst_img_clt_lr, model, scale)
     for i in 1:length(tst_img_clt_lr)
        sr =test_sr(model, add_dim(Knet.KnetArray(rgb_images(tst_img_clt_lr[i]))))
-       save(string(dir, "SR_X" , scale, "/scale_", scale, "_", i, ".png"), sr) 
+       save(string(dir, scale, "/", model_type, "/", "scale_", i, ".png"), sr) 
     end
 end

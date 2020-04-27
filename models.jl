@@ -15,7 +15,7 @@ end
 (c::Chain)(x) = (for l in c.layers; x = l(x); end; x)
 
 mutable struct ResBlock3; chainModel; _s; ResBlock3(chainModel,_s) = new(chainModel,_s); end
-ResBlock3(w1,w2,cx,cy,s=1.0,f=relu) = begin
+ResBlock3(w1,w2,cx,cy,s,f=relu) = begin
                           rb3 = ResBlock3(Chain(
                           ConvModelRelu(param(w1,w2,cx,cy), param0(1,1,cy,1), f),
                           ConvModel(param(w1,w2,cx,cy), param0(1,1,cy,1))),s)
@@ -38,17 +38,27 @@ ChainResBlock2(w1,w2,cx,cy,n_iter,s=1.0,f=relu) = begin
 
 mutable struct UpsampleLayer; cm::ConvModel; UpsampleLayer(cm) = new(cm); end
 UpsampleLayer(w1,w2,cx,cy) = UpsampleLayer(ConvModel(w1,w2,cx,cy))
-(usp::UpsampleLayer)(x) = begin
-                              convx = usp.cm(x)
-                              scx = pixelShuffle2(convx)
-                              scx
-                          end
 
+    if scale==2 || scale==3
+        (usp::UpsampleLayer)(x) = begin
+                                  convx = usp.cm(x)
+                                  scx = pixelShuffle2(convx, scale)
+                                  scx
+                              end
+    elseif scale==4
+        (usp::UpsampleLayer)(x) = begin
+                              convx = usp.cm(x)
+                              scx = pixelShuffle2(convx, scale)
+                              convx2 = usp.cm(scx)
+                              scx2 = pixelShuffle2(convx2, scale)
+                              scx2
+                          end
+    end
 
 mutable struct EDSRModel; cmfirst::ConvModel; crb::ChainResBlock2; ul::UpsampleLayer; cmlast::ConvModel; 
 EDSRModel(cmfirst, crb, ul, cmlast)= new(cmfirst, crb, ul, cmlast); end
 
-EDSRModel(w1,w2,cx,cy, n_iter,s=1.0,f=relu) = EDSRModel(ConvModel(w1,w2,cx,cy), ChainResBlock2(w1,w2,cy,cy,n_iter),UpsampleLayer(w1,w2,cy,cy*4),ConvModel(w1,w2,cy,cx))
+EDSRModel(w1,w2,cx,cy, n_iter,s=1.0,f=relu) = EDSRModel(ConvModel(w1,w2,cx,cy), ChainResBlock2(w1,w2,cy,cy,n_iter),UpsampleLayer(w1,w2,cy,cy*scale*scale),ConvModel(w1,w2,cy,cx))
 
 (edsrm::EDSRModel)(x) = edsrm.cmlast(edsrm.ul(edsrm.crb(edsrm.cmfirst(x))))
 
@@ -56,7 +66,7 @@ mutable struct EDSRModelMean; edsrm::EDSRModel; mean_hc; EDSRModelMean(mean_hc)=
 EDSRModelMean(edsrm, mean_hc)= new(edsrm, mean_hc);
 end 
 
-EDSRModelMean(w1,w2,cx,cy, n_iter,s=1.0,f=relu, mhc=(0.4488, 0.4371, 0.4040))= EDSRModelMean(EDSRModel(w1,w2,cx,cy, n_iter), mhc)
+EDSRModelMean(w1,w2,cx,cy, n_iter,s=1.0, f=relu, mhc=(0.4488, 0.4371, 0.4040))= EDSRModelMean(EDSRModel(w1,w2,cx,cy, n_iter), mhc)
     
 
 (edsrmmean::EDSRModelMean)(x,y) = mean(broadcast(abs,edsrmmean(x)-y))
@@ -87,3 +97,7 @@ EDSRModelMean(w1,w2,cx,cy, n_iter,s=1.0,f=relu, mhc=(0.4488, 0.4371, 0.4040))= E
 
     ret_val = ypred_meansubt + k_sub_y
 end
+
+edsr_scale2_baseline = EDSRModelMean(3,3,3,output_features, n_iter);
+
+println("Model is generated!")

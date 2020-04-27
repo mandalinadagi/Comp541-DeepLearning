@@ -19,3 +19,5 @@ function calc_PSNR(model, data)
     end
     mean(psnr_val)
 end
+
+println("Evaluation metric: PSNR is generated.")

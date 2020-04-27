@@ -6,4 +6,5 @@ using IterTools: ncycle, takenth
 using Plots
 using Images, Knet, Random, ImageIO, TestImages, Colors
 using Statistics: mean
-using Knet: Knet, conv4, pool, mat, KnetArray, nll, progress, sgd, dropout, relu, Data, Param, abs
+
+println("Dependencies are registered...")

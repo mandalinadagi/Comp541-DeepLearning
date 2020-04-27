@@ -13,14 +13,14 @@ function Base.iterate(iter::Minb4, state=0)
     patches_x = Any[]
     patches_y = Any[]
     #s = (state)%(length(iter))
-    s = state
+    st = state
     for j in 1:iter.minibatchsize
-        patch_pair = takepatch([iter.xs[s*16 + j],iter.ys[s*16 + j]], iter.patchsize, iter.scale)
+        patch_pair = takepatch([iter.xs[st*16 + j],iter.ys[st*16 + j]], iter.patchsize, iter.scale)
         push!(patches_x, patch_pair[1])
         push!(patches_y, patch_pair[2])
     end
         
-        return [cat(patches_x...,dims=4),cat(patches_y...,dims=4)] , s+1
+        return [cat(patches_x...,dims=4),cat(patches_y...,dims=4)] , st+1
 end
 
 function Base.length(iter::Minb4)
@@ -34,12 +34,12 @@ function Base.iterate(itertest::DataTest, state=0)
      if(state==length(itertest))
         return nothing
     end
-    println(state)
-    s = state+1
-    xtst = KnetArray(rgb_images(itertest.xs[s]))
-    ytst = KnetArray(rgb_images(itertest.ys[s]))
+    #println(state)
+    st = state+1
+    xtst = KnetArray(rgb_images(itertest.xs[st]))
+    ytst = KnetArray(rgb_images(itertest.ys[st]))
         
-        return [add_dim(xtst),add_dim(ytst)] , s
+        return [add_dim(xtst),add_dim(ytst)] , st
 end
 
 function Base.length(itertest::DataTest)
@@ -55,7 +55,7 @@ function Base.iterate(f::DData2, s...)
     return (x,y), state
 end
 
-Base.length(f::DData2) = length(f.d) # collect needs this
+Base.length(f::DData2) = length(f.d)
 
 mutable struct Decay_LR3 ; curriter ; itr ; model ; decay; n_batches; end
 
