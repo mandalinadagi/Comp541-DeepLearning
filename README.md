@@ -58,6 +58,10 @@ optional arguments:
 ```
 
 
-**Results For EDSR Baseline Model**
-Scale 2:
-![super-resolution image](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/2/baseline/sr2.png)
+**Results For EDSR Baseline Model**\
+Scale 2:\
+![super-resolution image scale2](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/results_scale2.png)
+Scale 3:\
+![super-resolution image scale3](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/results_scale3.png)
+Scale 4:\
+![super-resolution image scale4](https://github.com/mandalinadagi/Comp541-DeepLearning/blob/master/results/results_scale4.png)
