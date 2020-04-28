@@ -1,10 +1,5 @@
 # EDSR- Julia
-Repository for EDSR model[1] implementation by using julia and Knet. 
-
-1. Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and
-Kyoung Mu Lee. Enhanced deep residual networks for single
-image super-resolution. In CVPRW, 2017
-https://arxiv.org/pdf/1707.02921.pdf
+Repository for [EDSR model](https://arxiv.org/pdf/1707.02921.pdf) implementation by using julia and Knet. 
 
 ```
 @InProceedings{Lim_2017_CVPR_Workshops,
@@ -72,13 +67,13 @@ optional arguments:
   -h, --help            show this help message and exit
 ```
 ## Test
-You can find the result images from ```../edsr/results``` folder and models from ```../edsr/models```
+Once you run ```julia test.jl``` ,you can find the result images from ```../edsr/results``` folder and models from ```../edsr/models```
 
-| Model | Scale | File name (.jld2) | Parameters | **PSNR** | Loss |
-|  ---  |  ---  | ---       | ---        | ---  | --- |
-| **EDSR** | 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB | 0.014 |
-| | 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB | 0.020 |
-| | 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB | 0.025 | 
+| Scale | File name (.jld2) | Parameters | **PSNR** | **L1-Loss** |
+|  ---  | ---       | ---        | ---  | --- |
+| 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB | 0.014 |
+| 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB | 0.020 |
+| 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB | 0.025 | 
 
 
 ## Results for EDSR Baseline Model 
