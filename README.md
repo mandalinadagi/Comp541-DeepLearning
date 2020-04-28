@@ -1,10 +1,5 @@
-# Comp541-DeepLearning
-Repository for EDSR model[1] implementation by using julia and Knet. 
-
-1. Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and
-Kyoung Mu Lee. Enhanced deep residual networks for single
-image super-resolution. In CVPRW, 2017
-https://arxiv.org/pdf/1707.02921.pdf
+# EDSR- Julia
+Repository for [EDSR model](https://arxiv.org/pdf/1707.02921.pdf) implementation by using julia and Knet. 
 
 ```
 @InProceedings{Lim_2017_CVPR_Workshops,
@@ -24,7 +19,8 @@ usage: train.jl [--scale SCALE] [--res_scale RES_SCALE]
                 [--batchsize BATCHSIZE] [--patchsize PATCHSIZE]
                 [--lr LR] [--decay DECAY] [--epochs EPOCHS]
                 [--evaluate_every EVALUATE_EVERY]
-                [--decay_no DECAY_NO] [--output_dir OUTPUT_DIR] [-h]
+                [--decay_no DECAY_NO] [--output_dir OUTPUT_DIR]
+                [--result_dir RESULT_DIR] [-h]
 
 EDSR Implementation in Knet
 
@@ -32,7 +28,7 @@ optional arguments:
   --scale SCALE         super-resolution scale (type: Int64, default:
                         2)
   --res_scale RES_SCALE
-                        residual scaling (type: Int64, default: 1)
+                        residual scaling (type: Float64, default: 1.0)
   --model_type MODEL_TYPE
                         type of model one of:
                         [baseline(16ResBlocks,64outputfeature),
@@ -45,7 +41,7 @@ optional arguments:
                         number of output feature channels (type:
                         Int64, default: 64)
   --data DATA           dataset directory (default:
-                        "/kuacc/users/ckorkmaz14/comp541_project/dataset/")
+                        "/kuacc/users/ckorkmaz14/comp541_project/data/")
   --batchsize BATCHSIZE
                         input batch size for training (type: Int64,
                         default: 16)
@@ -64,17 +60,20 @@ optional arguments:
                         Int64, default: 200)
   --output_dir OUTPUT_DIR
                         output directory for saving model (default:
-                        "./../models")
+                        "/kuacc/users/ckorkmaz14/comp541_project/edsr/models")
+  --result_dir RESULT_DIR
+                        output directory for saving model (default:
+                        "/kuacc/users/ckorkmaz14/comp541_project/edsr/results")
   -h, --help            show this help message and exit
 ```
 ## Test
-You can find the result images from ```edsr/results``` folder and models from ```edsr/models```
+Once you run ```julia test.jl``` ,you can find the result images from ```../edsr/results``` folder and models from ```../edsr/models```
 
-| Model | Scale | File name (.jld2) | Parameters | **PSNR** |
-|  ---  |  ---  | ---       | ---        | ---  |
-| **EDSR** | 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB |
-| | 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB |
-| | 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB |
+| Scale | File name (.jld2) | Parameters | **PSNR** | **L1-Loss** |
+|  ---  | ---       | ---        | ---  | --- |
+| 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB | 0.014 |
+| 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB | 0.020 |
+| 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB | 0.025 | 
 
 
 ## Results for EDSR Baseline Model 
