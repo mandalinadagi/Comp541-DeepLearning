@@ -71,9 +71,9 @@ Once you run ```julia test.jl``` ,you can find the result images from ```../edsr
 
 | Scale | File name (.jld2) | Parameters | **PSNR** | **L1-Loss** |
 |  ---  | ---       | ---        | ---  | --- |
-| 2 | edsr_scale2_baseline_model | 1.37 M | 33.48 dB | 0.014 |
-| 3 | edsr_scale3_baseline_model | 1.55 M | 29.93 dB | 0.020 |
-| 4 | edsr_scale4_baseline_model | 1.52 M | 28.04 dB | 0.025 | 
+| 2 | edsr_scale2_baseline_model | 1.37 M | 34.05 dB | 0.009 |
+| 3 | edsr_scale3_baseline_model | 1.55 M | 30.32 dB | 0.016 |
+| 4 | edsr_scale4_baseline_model | 1.52 M | 28.49 dB | 0.020 | 
 
 
 ## Results for EDSR Baseline Model 
